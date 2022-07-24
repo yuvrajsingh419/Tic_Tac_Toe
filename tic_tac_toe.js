@@ -6,7 +6,7 @@ let gameover = new Audio("gameover.mp3")
 let turn = "X"
 let isgameover = false;
 
-
+music.play()
 
 const changeTurn = () => {
     return turn === "X" ? "0" : "X"
@@ -24,13 +24,14 @@ const checkWin = () => {
         [0, 4, 8], //, 5, 15, 45
         [2, 4, 6], //, 5, 15, 135
     ]
-
+    
     wins.forEach(e => {
         if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "")){
-            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
+        document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
         isgameover = true
-        changeTurn=stop;
         document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "200px"
+        changeTurn=stop;
+       
         // document.querySelector(".line").style.width = "30vw";
         // document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
         }
@@ -39,7 +40,6 @@ const checkWin = () => {
 
 }
 
-music.play()
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element => {
     let boxtext = element.querySelector('.boxtext');
